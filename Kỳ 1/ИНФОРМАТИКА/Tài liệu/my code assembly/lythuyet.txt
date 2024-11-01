@@ -1,0 +1,85 @@
+* THANH GHI
+Có 4 thanh ghi lớn:
++ AX: tính toán
++ BX: lưu địa chỉ
++ CX: bộ đếm
++ DX: ghi dữ liệu
+=======================
+- đây là các thanh ghi đa năng
+- ngầm hiểu là biến toàn cục
+- lưu 16 bit
+=======================
+các thanh ghi lớn chia ra :
+vd: 
+- AX => 
++ AH (high) : 8 bit
++ AL (low) : 8 bit
+- BX, CX, DX : tương tự
+=========================
+- Thanh ghi si, di: lưu địa chỉ của vị trí thứ o => giống lưu địa chỉ biến chạy i
+
+------------------------------------------------------------------------------------------------
+
+CÁC LỆNH DI CHYỂN DỮ LIỆU
+- Lệnh mov (move)
++ cú pháp: mov bx, 2 (bx =2)
+* phải cùng bit
+
+- lệnh lea (lead efective address)
++ lấy phần địa chỉ offset của biến đưa vào thanh ghi 16 bit
++ hay dùng:
+. in ra màn hình xâu
+. str
+. lea si,a : si trỏ đến vị trí đầu tiên trong mảng a
++ đích đến thường là các thanh ghi: BX, CX, DX, BP, SI, DI
+
+
+-----------------------------------------------------------------------------------------------
+
+CÁC PHÉP TOÁN
+- Phép công add (addition)
++ cú pháp: add a, b (a = a + b)
+. a mất giá trị ban đầu
+
+- Phép trừ sub (substraction)
++ cú pháp: sub a,b ( a = a - b)
+. sub dl, [si] (dl = dl - [ds:si]
+
+- phép nhân mul (mutiply usigned byte or word)
++ 8bit x 8bit
+. số bị nhân phải là số 8 bit và đc để trong al
+. sau khi nhân: al.src -> ax
+. cú pháp: mul bl ( ax = al.bl)
+vd: 4 x 5
+  mov al, 4
+  mov bl, 5
+  mul bl ( ax = al.bl)
++ 16bit x 16bit
+. số bị nhân phải là số 16 bit và để trong ax
+. sau khi nhân: ax.arc -> ax
+. cú pháp: mul bx (dxax = ax.bx)
+
+- phép chia div(unsigned divide)
++ 16bit / 8bit
+. al lưu thương
+. ah lưu dư
+. cú pháp: div bl ( ax / bl = al (dư ah))
++ 16bit / 16bit
+. ax lưu thương
+. dx lưu dư
+.cú pháp: div bx (dxax / bx = ax (dư dx))
+
+- Lệnh dec (decrement destination register or memory)
++ giảm toán hạng đích đi 1
+. DST <- DST -1
+. cú pháp: dec al ( al = al - 1)
+
+- Lệnh inc (increment destination register or memory)
++ tăng toán hạng đích thêm 1
+. DST <- DST + 1
+. cú pháp: inc al ( al = al + 1)
+
+
+
+
+https://www.familug.org/2015/01/e-tro-thanh-linux-sysadmin.html
