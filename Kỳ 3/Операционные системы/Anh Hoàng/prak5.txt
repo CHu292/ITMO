@@ -1,0 +1,12 @@
+void *x = dlopen("path / 0.so", RTLD
+DT_RPATH
+LD_LIBRARY
+DT_RUNPATH
+./lib ./usr/lib
+__attribute__((constrctor)) name_load()
+-----------------------------
+pthread_t *thr;
+int n = pthread_create(&thr, NULL, func, &arg);
+pthread_detach
+malloc_check_
+address sanitizer

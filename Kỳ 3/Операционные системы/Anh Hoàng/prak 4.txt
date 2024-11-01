@@ -1,0 +1,19 @@
+voit (*func) (void *)
+
+pthread_t var 1
+pthread_t var 2
+pthread_equal()
+pthread_dtach()
+void *x = dlopen(...) //open a shared object
+
+dynamix_lib.so.1.2.3.4
+
+lib.1.so.1 
+LD_PRELOAD ./lib.so/prog
+DT_RPATH
+LD_LIBRARY_PATH
+DT_RUNPATH
+
+pthread_exit
+pthread_cancel
+ 

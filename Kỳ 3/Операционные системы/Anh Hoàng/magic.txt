@@ -1,0 +1,5 @@
+PE32 : 0b 01
+ELF : 7f 45 4c 46
+COFF : 4c 01
+a.out : 
+RelaxT

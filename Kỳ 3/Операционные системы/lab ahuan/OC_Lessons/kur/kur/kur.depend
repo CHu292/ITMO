@@ -1,0 +1,56 @@
+# depslib dependency file v1.0
+1527344792 source:c:\users\nguyen tuan anh\desktop\oc_lessons\kur\desk.cpp
+	<cstdlib>
+	<cstring>
+	<cstdio>
+	<conio.h>
+	<windows.h>
+	<graphics.h>
+	<iostream>
+	<string>
+	"desk.h"
+
+1527344784 c:\users\nguyen tuan anh\desktop\oc_lessons\kur\desk.h
+	"menu.h"
+	"listbox.h"
+	"mystring.h"
+
+1527344784 c:\users\nguyen tuan anh\desktop\oc_lessons\kur\menu.h
+
+1527344784 c:\users\nguyen tuan anh\desktop\oc_lessons\kur\listbox.h
+
+1527344784 c:\users\nguyen tuan anh\desktop\oc_lessons\kur\mystring.h
+	"friends.h"
+
+1527344784 c:\users\nguyen tuan anh\desktop\oc_lessons\kur\friends.h
+	"listbox.h"
+
+1527344784 source:c:\users\nguyen tuan anh\desktop\oc_lessons\kur\friends.cpp
+	"friends.h"
+	<iostream>
+
+1527344784 source:c:\users\nguyen tuan anh\desktop\oc_lessons\kur\listbox.cpp
+	<cstdlib>
+	<cstdio>
+	<graphics.h>
+	"listbox.h"
+
+1527344784 source:c:\users\nguyen tuan anh\desktop\oc_lessons\kur\main.cpp
+	<cstdlib>
+	<graphics.h>
+	"desk.h"
+
+1527344784 source:c:\users\nguyen tuan anh\desktop\oc_lessons\kur\menu.cpp
+	<cstdlib>
+	<cstdio>
+	<cstring>
+	<conio.h>
+	<graphics.h>
+	"menu.h"
+
+1527344784 source:c:\users\nguyen tuan anh\desktop\oc_lessons\kur\mystring.cpp
+	<iostream>
+	<cstring>
+	<cstdlib>
+	"mystring.h"
+

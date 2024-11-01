@@ -1,0 +1,101 @@
+lab1:
+xử lí C trên linux:
+- chương trình, cho phép thực hiện tìm kiếm đệ quy file, bắt đầu từ thư mục chỉ định ( dùng thư viện plugin động( được chia sẻ))
+- thư viện động, thực hiện theo variant theo tiêu chuẩn tìm file
+
++ chạy bằng gcc
++ CT phải là console tiện ích, cài đặt của nó dưới dạng mệnh đề trong dòng lệnh vs sự hỗ trợ của biến môi trường:
+
+  dạng 	lab1abcNXXXX [[ опции ] каталог]
+
++ Chương trình phải tìm kiếm đệ quy các tệp phù hợp với tiêu chí được cung cấp bởi các options trên dòng lệnh. Tiêu chí tìm kiếm có sẵn (và, tương ứng, các tùy chọn có sẵn) được xác định bởi sự hiện diện trong thư mục được chỉ định thư viện động mở rộng chức năng của chương trình (sau đây gọi là - plugin).
++ Trong quá trình xuất mà ko có tên calatog, CT sẽ xuất thông tin trợ giúp theo options và plugin cho phép ở thời điểm xuất.
++ Các optins được hỗ trợ bởi chương trình được liệt kê trong Bảng. 2
++ Tất cả các tùy chọn được hỗ trợ bởi các plugin và mô tả của chúng được hiển thị. Mặc định, plugins đc tìm kiếm ở catalog đó, nơi mà đặt file CT đc tìm thấy, đó là option -P. 
++ nếu dùng nhiều option, các tiêu chuẩn đó đc nối vs nhau bằng option logic -A(and) hoặc là -O(or). Option N sẽ đảo ngược kết quả sau khi thực hiện hết các option -A và -O.
+
++ Plugin là các thư viện động ở định dạng ELF với tên và phần mở rộng tùy ý .SO và các hàm giao diện được liệt kê trong bảng 1,Mô tả chi tiết về API plugin được chứa trong tệp plugin_api.h.
++ Khi một tệp được tìm thấy phù hợp với tiêu chí tìm kiếm đã chỉ định, đường dẫn đầy đủ đến tệp đó sẽ được ghi vào đầu ra chuẩn. Khi bạn xác định biến môi trường LAB1DEBUG, thông tin về những gì được tìm thấy và vị trí trong tệp được tìm thấy trên luồng lỗi tiêu chuẩn (để dễ hiểu hơn tại sao tệp đáp ứng tiêu chí tìm kiếm)phải đc xuất ra  và bất kỳ thông tin gỡ lỗi bổ sung nào cũng có thể được xuất. Các biến môi trường phải được hỗ trợ bởi chương trình và thư viện được hiển thị trong Bảng. 3.
+
++ tên CT: lab1hhnN3251 
++ tên thư viện: libhhnN3251.so 
+
++project(sources, headers, Makefile and other files required for assembly)phải được chứa trong một thư mục riêng biệt có tên trùng vs tên CT lab1hhnN3251 và đc tập hợp vs tiện ích make. Makefile tối thiểu phải có all và clean. Nếu dùng nhiều hơn  make all, thì tạo 1 file README.txt ở trong project.  
++ Thứ tự thực hiện:
+1. chuẩn bị bộ test ( tiêu chuẩn trả lời đc và ko trả lời được ) dán nó vào cây thư mục.
+2. Biên dịch CT và thư viện với cờ -Wall -Wextra -Werror và loại ỏ tất cả cảnh báo vs lỗi.
+3. Kiểm tra CT và thư viện bằng các chương trình thử nghiệm lab1test, lab1call,libavg.so và tìm kiếm trong cây thư mục, đảm bảo ko có lỗi, nếu có quay lại b2.
+4. Chạy chương trình (tìm kiếm tệp trong cây thư mục thử nghiệm) dưới sự kiểm soát của valgrind, đảm bảo không có rò rỉ bộ nhớ. Nếu có rò rỉ, trước tiên hãy loại bỏ chúng và quay lại bước 2. Nếu không có rò rỉ, sau đó lưu báo cáo vào tệp valgrind.txt và thêm nó vào thư mục dự án.
+5. Biên dịch chương trình với cờ -O2, kiểm tra lại chương trình và thư viện sử dụng các chương trình thử nghiệm lab1test, lab1call và libavg.so và tìm kiếm trong cây thư mục test. Nếu tìm thấy lỗi, hãy quay lại bước 2.
+6. Loại bỏ tất cả các tệp thực thi và tệp trung gian khỏi thư mục dự án (makeclean).
+Chỉ các tệp * .c, * .h, Makefile, README.txt, valgrind.txt mới được lưu trong kho lưu trữ.
+7. Zip thư mục dự án (tar -czvf lab1abcNXXXX.tar.gz lab1abcNXXXX /).
+
+---
+8. Отправить полученный архив на почту преподавателя, который ведет лабораторные
+(Гирику А.В. на itmo.osp@gmail.com, Грозову В.А. на va_groz@mail.ru), письмом с
+темой «ОСП ЛР1 Фамилия Имя Отчество NXXXX»
+9. Дождаться ответа по почте или на лабораторном занятии, устранить (loại bỏ)  возможные
+замечания (повторить с пункта 1).
+10. Получить подтверждение от преподавателя, что лабораторная работа выполнена
+успешно, после чего подготовить отчет в электронной форме (состав отчета см.
+ниже).
+11. Отправить архив с окончательным вариантом проекта и отчетом в формате pdf (не
+забыть про подпись на первой странице!) на почту преподавателя письмом с темой
+«ОСП Отчет по ЛР1 Фамилия Имя Отчество NXXXX». Файл отчета должен иметь
+название NXXX_ФамилияИО_ЛР1.pdf.
+12. Получить некоторое количество вопросов по отчету от преподавателя и дать на них
+ответы (а может и не получить, если лабораторная выполнена на хорошем уровне и
+сомнений в знаниях студента у преподавателя не возникает). Получить от
+преподавателя подтверждение, что отчет принят.
+13. Немного расслабиться и приступить к следующей лабораторной работе :-)
+
+---
++ otchot dạng pdf và chứa:
+tituanik;
+bài tập;
+make-file
+otchot valgrind từ dòng: HEAP SUMMARY
+ảnh màn hình ví dụng CT( screenshot)
+source code với comment
+
+Yêu cầu:
+1 	При выполнении лабораторной работы следует использовать функции стандартной библиотеки С и системные вызовы операционной системы. Использовать ввод-вывод в стиле С++ (классы ifstream/ofstream/...) запрещено. Использовать контейнеры и алгоритмы STL (<string>, <vector>, <map>, ...) запрещено.
+
+2	В программах должна присутствовать обработка ошибок: в случаях, если пользователь задал неверную комбинацию опций, указал файлы, которые невозможно открыть, и т.д. программа должна выдавать диагностическое сообщение на консоль (в стандартный поток ошибок и/или лог-файл), прежде чем завершиться.
+
+3	Nghiêm cấm sử dụng mảng tĩnh (với kích thước được chỉ định tại thời điểm biên dịch) cho bất kỳ dữ liệu nào, kích thước của mảng đó phụ thuộc vào dữ liệu đầu vào hoặc điều kiện khởi chạy. Để lưu trữ dữ liệu đó, cần phải sử dụng bộ nhớ động và xác định dung lượng bộ nhớ cần thiết tùy thuộc vào tình huống.
+
+4. 	Chỉ có các tùy chọn dài được hỗ trợ bởi các plugin (ví dụ: cho mục đích gỡ lỗi). Việc có các tên option giống nhau trong các plugin khác nhau được coi là một lỗi.
+
+5. 	Các thông điệp thông tin được chương trình xuất ra theo uồng tiêu chuẩn đầu ra(stdout)	, thông báo lỗi - đến dòng lỗi tiêu chuẩn( stderr).
+
+6. 	Plugin (bất kỳ các tệp có phần mở rộng .so) được tìm kiếm theo mặc định trong cùng thư mục với tệp thực thi. Xin lưu ý rằng thư mục này có thể không giống với thư mục làm việc hiện tại . Tùy chọn -P cho phép bạn chỉ định thư mục plugin một cách rõ ràng.
+
+7.	Tránh GNU C mở rộng và tập trung vào tiêu chuẩn C11 trở lên.
+
+8. 	Trong các variant, cung cấp cho việc tìm kiếm các giá trị đa byte (nhị phân, dữ liệu "được đóng gói"), cần phải cung cấp cho việc tìm kiếm các tùy chọn để lưu trữ dữ liệu và ở trong thứ tự <<little-endian>> và <<big-endian>>.
+
+9.	Trong variant, nơi cần so sánh đại lượng, thì phép so sánh đc biểu thị theo quy tắc:
+	eq ( equal)	ne(not equal)	gt( great than)		lt(less than)	ge(great or equal)	le(less or equal)
+
+10.	Option -A -O -N phải làm việc theo cách sau:	
+Предположим, программе доступно два плагина. Первый поддерживает опцию --exe, позволяющую найти
+любые исполняемые файлы, второй — опцию --file-len, позволяющую найти файлы
+заданной длины. При запуске
+lab1abcNXXXX --exe --file-len 1000 /tmp
+программа должна искать в каталоге /tmp и вложенных в него исполняемые файлы длиной
+1000 байтов. При запуске
+lab1abcNXXXX -O --exe --file-len 1000 /tmp
+программа должна искать в каталоге /tmp и вложенных в него или исполняемые файлы, или
+файлы длиной 1000 (то есть совпадение должно быть хотя бы по одному из критериев). В
+случае запуска
+lab1abcNXXXX -O -N --exe --file-len 1000 /tmp
+программа должна искать файлы, которые не являются исполняемыми и не имеют длину
+1000 байтов.
+
+
+bảng 1 - bảng 2 bảng 3 bảng 4
+	
+
+ 	
